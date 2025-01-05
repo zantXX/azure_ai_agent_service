@@ -1,7 +1,13 @@
 from azure.ai.projects import AIProjectClient
-from azure.ai.projects.models import FileSearchTool, VectorStoreDataSource, VectorStoreDataSourceAssetType
-from azure.identity import DefaultAzureCredential
 
 def create_thread(project_client: AIProjectClient):
     thread = project_client.agents.create_thread()
     return thread
+
+def get_thread(project_client: AIProjectClient):
+    thread = project_client.agents.get_thread()
+    return thread
+
+def delete_thread(project_client: AIProjectClient):
+    project_client.agents.delete_thread()
+    return "Deteted thread"

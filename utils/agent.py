@@ -21,3 +21,8 @@ def delete_agent(project_client: AIProjectClient, agent_id: str):
 def list_agents(project_client: AIProjectClient):
     agents = project_client.agents.list_agents(order="desc")
     return agents
+
+def agent_agent(project_client: AIProjectClient, agent_id: str):
+    # Delete the agent once done
+    agent = project_client.agents.get_agent(agent_id)
+    return agent

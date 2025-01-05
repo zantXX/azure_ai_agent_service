@@ -4,10 +4,7 @@ from azure.ai.projects import AIProjectClient
 from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 import json
-from .utils.gradio_functions import create_agent, select_agent
-
-def greet(name):
-    return "Hello " + name + "!"
+from .utils.gradio_functions import create_agent
 
 def create_UI():
     project_client = AIProjectClient.from_connection_string(
@@ -51,14 +48,13 @@ def create_UI():
             with gr.Column():
                 gr.Markdown("Select Agent and chat")
                 agent = gr.Dropdown(["asst hQFC6d4izGSzirHJluWnQSOH", "agentid"], label="Agent ID")
-                agent.change(select_agent, )
+                #agent.change(select_agent, inputs=[], outputs=[])
                 agent_instructions_reprica = gr.TextArea(label="instructions")
                 agent_setting = gr.JSON(label="Patameta")
-                gr.Dropdown(["thread", "agentid"], label="thread id")
-                gr.Button("new chat")
-                gr.ChatInterface(
-                    greet, type="messages",
-                )
+                threads = gr.Dropdown(["thread", "agentid"], label="thread id")
+                button_newChat = gr.Button("new chat")
+                #button_newChat.click(fn=create_thread, inputs=[], outputs=[])
+                #gr.ChatInterface(create_message, type="messages",)
         with gr.Row():
             with gr.Column():
                 overall_log = gr.TextArea(label="Log")
