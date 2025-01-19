@@ -21,16 +21,12 @@ uv run gradio_ui.py
 1. パッケージの整理
     - [公式関数](https://learn.microsoft.com/ja-jp/python/api/azure-ai-projects/azure.ai.projects?view=azure-python-preview)から関数を引っ張ってきて追加する。
     - gradio接続用の関数を作っていく(`utils/gradio_functions.py`)
-        - create agentするときの動作
-        - fileをアップロードするときの動作-ログ表示
-        - agentの更新、選択時の操作
-        - new chatの動作
-        - chatの更新
+        - chatの動作についって
         - azure ai searchの動作
         - 実行手順をリスト表示
+        - fileをアップロードするときの動作を最適化(ファイルの更新差分のみをアップロード)
 1. gradio
     - web uiの更新(`gradio_ui.py`)
-        - agentとthreadの削除ボタンの追加
         - azure ai searchの動作
         - ファイル選択フィールドの追加
             - ツールに登録する

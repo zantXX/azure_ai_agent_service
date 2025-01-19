@@ -5,12 +5,12 @@ from azure.ai.projects.models import CodeInterpreterTool
 from azure.ai.projects.models import BingGroundingTool
 from azure.ai.projects.models import AzureAISearchTool
 from azure.ai.projects.models import FunctionTool, ToolSet, Tool
-from ..files.user_functions import fetch_weather
+from .user_functions import fetch_weather
 from typing import Any, Callable, Set, Dict, List, Optional
 from pathlib import Path
 
-def code_interpreter_tool(file=None):
-    return CodeInterpreterTool(file_ids=[file.id])
+def code_interpreter_tool(file_ids=[]):
+    return CodeInterpreterTool(file_ids=file_ids)
 
 def download_interpretter_file(project_client: AIProjectClient, messages, downloads_folder: str):
     # save the newly created file
@@ -52,8 +52,8 @@ def enterprise_file_search_upload(project_client: AIProjectClient, file_path: st
     vector_store = project_client.agents.create_vector_store_and_poll(data_sources=[ds], name=vector_name)
     return vector_store
 
-def file_search_tool(vector_store_id: str):
-    return FileSearchTool(vector_store_ids=[vector_store_id])
+def file_search_tool(vector_store_ids=[]):
+    return FileSearchTool(vector_store_ids=vector_store_ids)
 
 def delete_file(project_client: AIProjectClient, file):
     project_client.agents.delete_file(file.id)
